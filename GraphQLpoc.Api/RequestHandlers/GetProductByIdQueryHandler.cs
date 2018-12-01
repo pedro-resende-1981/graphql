@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,12 +22,12 @@ namespace GraphQLPoc.Api.RequestHandlers
 
         public Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            var argument = request.GraphQLContext.GetArgument<int>("id");
+            var argument = request.GraphQLContext.GetArgument<string>("externalId");
             var selectedPropertiesList = request.GraphQLContext.GetSelectedPropertiesListAsString();
             var result = _context
                 .Products
-                .Select<Product>($"new(id,{selectedPropertiesList})")
-                .SingleOrDefault(p => p.Id == argument);
+                .Select<Product>($"new(externalId,{selectedPropertiesList})")
+                .SingleOrDefault(p => p.ExternalId == Guid.Parse(argument));
 
             return Task.FromResult(result);
         }
