@@ -1,6 +1,5 @@
 ﻿using GraphQL.Types;
 using GraphQLpoc.Api.Viewmodels;
-using GraphQLPoc.Models;
 
 namespace GraphQLpoc.Api.GraphQL.Types
 {
@@ -9,7 +8,7 @@ namespace GraphQLpoc.Api.GraphQL.Types
         public SupplierType()
         {
             Field(x => x.Name);
-            Field(x => x.ExternalId, type: typeof(GuidGraphType)).Description("External Id");
+            Field(x => x.ExternalId, type: typeof(GuidGraphType)).Description("External identifier");
             Field<ListGraphType<ProductType>>(name: "Products", resolve: ctx => ctx.Source.Products);
         }
     }

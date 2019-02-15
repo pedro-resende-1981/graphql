@@ -10,6 +10,8 @@ namespace GraphQLPoc.Api.Extensions
         {
             configuration.CreateMap<Product, ProductVm>();
             configuration.CreateMap<Supplier, SupplierVm>();
+            configuration.CreateMap<Order, OrderVm>();
+            configuration.CreateMap<ProductLine, ProductLineVm>();
 
             return configuration;
         }

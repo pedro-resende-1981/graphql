@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using GraphQLPoc.Models;
 using MediatR;
 
